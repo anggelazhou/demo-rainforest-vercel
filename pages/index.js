@@ -5,6 +5,7 @@ export default function Home() {
     <div className="container">
       <Head>
         <title>Create Next App</title>
+        <div>Version 2 :)</div>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
