@@ -4,12 +4,24 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: amondnet/vercel-action@v20
+      - name: checkout from github
+        uses: actions/checkout@v2
+      - name: deploy to vercel
+        uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-#          github-token: ${{ secrets.G_TOKEN }} #Optional
+          #github-token: ${{ secrets.G_TOKEN }} #Optional
           vercel-args: '--prod' #Optional
           vercel-org-id: 'zX32hMWl3HJ1Rjk9ZHUAQ8Wg'  #Required
           vercel-project-id: 'prj_FyfCVv49TCBVVOKPF1MTTf6UI9XI' #Required
           working-directory: ./
+      - name: invoke rainforest QA tests
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: 'https://app.rainforestqa.com/api/1/runs'
+          method: 'POST'
+          customHeaders: '{ "CLIENT_TOKEN": "b9b0eb50eb889e869328cd87b69d0ed5" }'
+          data: '{"site_id": 17009, "environment_id": 26281}'
+
+
+
