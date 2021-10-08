@@ -5,7 +5,7 @@ export default function Home() {
     <div className="container">
       <Head>
         <title>Create Next App</title>
-        <div>Version 5 (w automated testing) on dev branch :)</div>
+        <div>Version 6 (w dev preview) on dev branch :)</div>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
